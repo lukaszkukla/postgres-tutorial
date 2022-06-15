@@ -46,16 +46,35 @@ session = Session()
 base.metadata.create_all(db)
 
 # Query 1 - select all records from the 'Artist' table
-artists = session.query(Artist)
-for artist in artists:
-    print(artist.ArtistId, artist.Name, sep=" | ")
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.ArtistId, artist.Name, sep=" | ")
 
 # Query 2 - select Name from the 'Artist' table
+# artists = session.query(Artist)
+# for artist in artists:
+#     print(artist.Name, sep=" | ")
 
 # Query 3 - select Queen from the 'Artist' table
+# artist = session.query(Artist).filter_by(Name="Queen").first()
+# print(artist.ArtistId, artist.Name, sep=" | ")
 
 # Query 4 - select ArtistId #51 from the 'Artist' table
+# artist = session.query(Artist).filter_by(ArtistId=51).first()
+# print(artist.ArtistId, artist.Name, sep=" | ")
 
 # Query 5 - select all albums for ArtistId #51 from the 'Album' table
+# albums = session.query(Album).filter_by(ArtistId=51)
+# for album in albums:
+#     print(album.AlbumId, album.Title, album.ArtistId, sep=" | ")
 
 # Query 6 - select all tracks where composer is 'Queen' from the 'Track' table
+tracks = session.query(Track).filter_by(Composer="Queen")
+for track in tracks:
+    print(
+        track.TrackId,
+        track.Name,
+        track.Composer,
+        track.UnitPrice,
+        sep=" | "
+    )
